@@ -73,3 +73,5 @@ y_pred = m * x_pred + b
 ## 13. SINGLE PERCEPTRON GERBANG LOGIKA OR
 
 ## 14. DIAGRAM MLP (Multi-Layer Perceptron)
+
+ini coba push
