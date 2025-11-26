@@ -1,0 +1,67 @@
+Apa itu KNN (K-Nearest Neighbors)?
+KNN adalah salah satu algoritma pembelajaran mesin yang paling sederhana dan intuitif untuk tugas klasifikasi (dan juga dapat digunakan untuk regresi).
+Inti dari KNN dapat diringkas dalam satu kalimat:
+"Beri tahu saya siapa teman-temannya, dan saya akan memberi tahu Anda siapa Anda."
+Atau dalam konteks data:
+"Beri tahu saya data titik di sekitarnya, dan saya akan beri tahu Anda kelas data titik tersebut."
+KNN adalah algoritma non-parametrik dan lazy learner:
+•	Non-parametrik: Ia tidak membuat asumsi apapun tentang distribusi data yang mendasari (tidak seperti, misalnya, Naive Bayes yang berasumsi data terdistribusi normal).
+•	Lazy Learner (Instance-based): Algoritma ini tidak "belajar" sebuah model dari data training dalam fase pelatihan. Ia hanya menyimpan/menghafal (memorize) semua data training. Semua perhitungan dilakukan pada saat prediksi/inferensi. Ini membuat fase training sangat cepat, tetapi fase prediksi bisa lambat untuk dataset yang besar.
+________________________________________
+Bagaimana Cara Kerja KNN (Langkah demi Langkah)?
+Misalkan kita memiliki dataset dengan dua fitur (X1 dan X2) dan dua kelas (Merah dan Biru). Kita ingin memprediksi kelas dari sebuah data point baru (titik hijau).
+Langkah 1: Pilih Nilai K
+K adalah sebuah bilangan bulat positif (biasanya ganjil, seperti 1, 3, 5, ...) yang mewakili jumlah tetangga terdekat yang akan kita lihat.
+Langkah 2: Hitung Jarak
+Hitung jarak antara data point baru dengan setiap titik dalam data training. Metrik jarak yang paling umum adalah Jarak Euclidean:
+d = √[(x₂ - x₁)² + (y₂ - y₁)²]
+Metrik lain seperti Manhattan juga bisa digunakan.
+Langkah 3: Cari K Tetangga Terdekat
+Urutkan semua titik data training berdasarkan jaraknya dari data point baru, lalu ambil K buah titik dengan jarak terdekat.
+Langkah 4: Lakukan Voting
+Lihat kelas dari K tetangga terdekat tersebut.
+•	Prediksi = kelas yang paling banyak (mayoritas) muncul di antara K tetangga.
+________________________________________
+Ilustrasi Visual dengan K yang Berbeda
+Mari kita lihat bagaimana pemilihan nilai K mempengaruhi hasil prediksi:
+text
+Illustration:
+
+Data:      (X1, X2)    Class
+Training:  (2, 3)      Merah
+           (5, 4)      Biru
+           (4, 3)      Biru
+           (3, 2)      Merah
+           (6, 5)      Biru
+
+New Point: (4, 4)      ?
+Kasus 1: Jika K = 3
+1.	Hitung jarak dari (4,4) ke semua titik training.
+2.	Misalkan 3 tetangga terdekat adalah: (5,4)=Biru, (4,3)=Biru, (6,5)=Biru.
+3.	Lakukan voting: Biru (3 votes), Merah (0 votes).
+4.	Prediksi: BIRU
+Kasus 2: Jika K = 1
+1.	Cari 1 tetangga terdekat. Misalkan (5,4)=Biru.
+2.	Prediksi: BIRU
+________________________________________
+Kelebihan dan Kekurangan KNN
+Kelebihan:
+1.	Sederhana dan Mudah Dipahami: Konsepnya sangat intuitif.
+2.	Tidak Ada Waktu Training: Karena hanya menyimpan data, fase "training" sangat cepat.
+3.	Berkinerja Baik untuk Data dengan Pola Kompleks: Selama data cukup, KNN dapat menangkap pola yang sangat rumit tanpa asumsi model.
+4.	️ Mudah Diimplementasikan: Hanya beberapa baris kode untuk versi dasarnya.
+Kekurangan:
+1.	Lambat dalam Prediksi: Karena harus menghitung jarak ke semua titik training, prediksi menjadi sangat lambat untuk dataset yang besar.
+2.	Sensitif terhadap Skala Fitur: Jika fitur A berkisar 1-10 dan fitur B berkisar 1000-100000, fitur B akan mendominasi perhitungan jarak. Oleh karena itu, feature scaling (normalisasi/standarisasi) sangat penting dalam KNN.
+3.	Kurang Efektif pada Dimensi Tinggi: Terkena "Curse of Dimensionality". Di ruang berdimensi sangat tinggi, konsep "jarak terdekat" menjadi kurang bermakna karena semua titik cenderung berjarak sama.
+4.	Pemilihan K yang Kritis: Nilai K yang salah dapat menyebabkan performa buruk.
+o	K terlalu kecil (K=1): Model menjadi very complex dan noisy (overfitting). Sangat sensitif terhadap outlier.
+o	K terlalu besar: Model menjadi too simple (underfitting). Batas keputusan menjadi halus dan mungkin mengabaikan pola lokal.
+________________________________________
+
+Kesimpulan
+KNN adalah pintu masuk yang sempurna ke dunia klasifikasi. Ia mengajarkan konsep-konsep fundamental seperti:
+•	Similarity (melalui perhitungan jarak).
+•	Hyperparameter (nilai K).
+•	Konsep overfitting vs underfitting (dengan memvariasikan K).
+Langkah logis selanjutnya adalah: Bagaimana jika kita bisa "meringkas" pengetahuan dari data training itu menjadi sebuah model matematis (seperti perceptron) yang tidak perlu menyimpan semua data, tetapi masih bisa membuat prediksi yang akurat? Di sinilah Single Perceptron mengambil alih, dan Anda akan melihat bagaimana Gradient Descent yang telah Anda pelajari menjadi tulang punggung dari "proses belajar" tersebut.
