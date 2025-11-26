@@ -24,6 +24,10 @@ venv\Scripts\activate # Windows
 
 #2. Install Flask
 pip install matplotlib numpy
+pip install seaborn
+pip install scikit-learn
+pip install tensorflow
+pip install flask
 ```
 
 ## 1. NORMALISASI DATA
@@ -51,27 +55,3 @@ b = y1 - m * x1
 # Persamaan garis: y = m*x + b
 y_pred = m * x_pred + b
 ```
-
-## 3. BELAJAR SUM
-
-## 4. BELAJAR TURUNAN
-
-## 5. PREDIKSI DENGAN REGRESI LINEAR OLS
-
-## 6. BELAJAR MATRIX
-
-## 7. PREDIKSI DENGAN REGRESI LINEAR OLS MATRIX
-
-## 8. GRADIEN DECENT
-
-## 10. SINGLE PERCEPTRON LINEAR
-
-## 11. SINGLE PERCEPTRON SIGMOID >> KLASIFIKASI /DECISION BOUNDRY
-
-## 12. SINGLE PERCEPTRON GERBANG LOGIKA AND
-
-## 13. SINGLE PERCEPTRON GERBANG LOGIKA OR
-
-## 14. DIAGRAM MLP (Multi-Layer Perceptron)
-
-ini coba push
